@@ -9,9 +9,11 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     {{-- Font awesome --}}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -98,7 +100,7 @@
                             <tbody>
                                 @foreach($items_array as $ikey => $item)
                                     <tr>
-                                        <td><img src="{{$item['image']}}"></td>
+                                        <td><img src="{{$item['image']}}" height="50px" wi></td>
                                         <td><a href="{{$item['link']}}" target="_blank">{{$item['title']}}</a></td>
                                         <td>
                                         @if($item['status'] == 0)
@@ -127,7 +129,10 @@
     {{-- My script --}}
     <script>
         $(document).ready(function(){
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                "aLengthMenu": [[5, 10, 15, 25, 50, 100 , -1], [5, 10, 15, 25, 50, 100, "All"]],
+                "iDisplayLength" : 5,
+    });
             $('.add').click(function(){
                 $(this).text('Added to List').attr("disabled", "disabled");
                 var text = $(this).closest('td').find('.title').val();
