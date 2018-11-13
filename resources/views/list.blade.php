@@ -85,7 +85,7 @@
                             @foreach($items as $item)
                                 <li class="list-group-item ourItem">
                                     <input type="hidden" class="itemId" value="{{$item->id}}"><br />
-                                    <a href="{{$item->book_url}}"><img src="{{$item->book_image}}">{{$item->title}}</a>
+                                    <a href="{{$item->book_url}}" target="_blank"><img src="{{$item->book_image}}">{{$item->title}}</a>
                                     <button class="remove-book btn btn-danger">Remove</button>
                                 </li>
                             @endforeach

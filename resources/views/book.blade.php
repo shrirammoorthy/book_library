@@ -99,7 +99,7 @@
                                 @foreach($items_array as $ikey => $item)
                                     <tr>
                                         <td><img src="{{$item['image']}}"></td>
-                                        <td><a href="{{$item['link']}}">{{$item['title']}}</a></td>
+                                        <td><a href="{{$item['link']}}" target="_blank">{{$item['title']}}</a></td>
                                         <td>
                                         @if($item['status'] == 0)
                                         <input type="hidden" class="title" value= "{{$item['title']}}"><input type="hidden" class="image_url" value= "{{$item['image']}}"><input type="hidden" class="link_url" value= "{{$item['link']}}"><button class="add btn btn-success">Add to List</button>
