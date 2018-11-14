@@ -31,5 +31,5 @@ Auth::routes();
 Route::get('/google/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/google/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/facebbok/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/facebook/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/facebook/callback', 'SocialAuthFacebookController@callback');
