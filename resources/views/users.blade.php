@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel - Book Store Application</title>
     {{-- CSS --}}
-    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/jquery-ui.css') }}" rel="stylesheet">
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     {{-- Font awesome --}}
@@ -27,7 +27,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ secure_url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -42,8 +42,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a class= "btn btn-danger" href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ secure_url('login') }}">Login</a></li>
+                            <li><a class= "btn btn-danger" href="{{ secure_url('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -52,15 +52,15 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/search') }}">Global Books Search</a>
-                                        <a href="{{ url('/list') }}">My Book List</a>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ secure_url('/search') }}">Global Books Search</a>
+                                        <a href="{{ secure_url('/list') }}">My Book List</a>
+                                        <a href="{{ secure_url('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ secure_url('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

@@ -69,11 +69,11 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/list') }}">My Book List</a>
+                        <a href="{{ secure_url('/home') }}">Home</a>
+                        <a href="{{ secure_url('/list') }}">My Book List</a>
                     @else
-                        <a class ="btn btn-primary" href="{{ url('/login') }}">Login</a>
-                        <a class ="btn btn-primary" href="{{ url('/register') }}">Register</a>
+                        <a class ="btn btn-primary" href="{{ secure_url('/login') }}">Login</a>
+                        <a class ="btn btn-primary" href="{{ secure_url('/register') }}">Register</a>
                     @endif
                 </div>
             @endif
