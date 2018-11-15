@@ -28,8 +28,5 @@ Route::get('users_list/{id}','ListController@users_list');
 
 Auth::routes();
 
-Route::get('/google/redirect', 'Auth\LoginController@redirectToProvider');
-Route::get('/google/callback', 'Auth\LoginController@handleProviderCallback');
-
-Route::get('/facebook/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/facebook/callback', 'SocialAuthFacebookController@callback');
+Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback');

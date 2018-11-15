@@ -45,11 +45,8 @@
                                     Login
                                 </button>
 
-                                <a href="{{ url('google/redirect') }}" class="btn btn-warning">
+                                <a href="{{ url('redirect') }}" class="btn btn-warning">
 									<strong>Login With Google</strong>
-                                </a> 
-                                <a href="{{ url('facebook/redirect') }}" class="btn btn-warning">
-									<strong>Login With Facebook</strong>
                                 </a> 
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
