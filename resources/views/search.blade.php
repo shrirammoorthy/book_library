@@ -14,63 +14,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ secure_url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ secure_url('login') }}">Login</a></li>
-                            <li><a class= "btn btn-danger" href="{{ secure_url('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ secure_url('/users') }}">All Users Book List</a>
-                                        <a href="{{ secure_url('/list') }}">My Books</a>
-                                        <a href="{{ secure_url('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ secure_url('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    @include('header')
     <br>
     <div class="container">
         <div class="row">
@@ -80,13 +24,13 @@
 				    <h3 class="panel-success">Global Books Search</h3>
 				  </div>
 				  <div class="panel-body" id="items">
-                            <form id="logout-form" action="{{ secure_url('book_search') }}" method="POST">
+                            <form id="search-form" action="{{ secure_url('book_search') }}" method="POST">
                                 {{ csrf_field() }}
-                                <input type="radio" name="gender" value="title">Title<br>
-                                <input type="radio" name="gender" value="isbn">ISBN<br>
+                                <input type="radio" name="book" value="title">Title<br>
+                                <input type="radio" name="book" value="isbn">ISBN<br>
                                 <input type="text" id="title" name="title" placeholder="Enter title of the book.">
                                 <input type="text" id ="isbn" name="isbn" placeholder="Enter ISBN of the book."><br />
-                                <input type="submit" class="btn btn-default" value="Search">
+                                <input type="button" class="btn btn-default" id="search_button" value="Search">
                             </form>
 				  </div>
 				</div>
@@ -102,17 +46,39 @@
         <script>
          $(document).ready(function(){
          $("#title").hide(); $("#isbn").hide();
-            $("input[name='gender']").click(function(){
+            $("input[name='book']").click(function(){
                 var clicked = $(this).val();
                 if(clicked == 'title') 
                 {
                     $("#title").show();
                      $("#isbn").val('').hide();
+                     $("#isbn").attr("disabled", "disabled"); 
+                     $("#title").removeAttr("disabled"); 
                 }
                 else {
                     $("#title").val('').hide();
                      $("#isbn").show();
+                     $("#title").attr("disabled", "disabled"); 
+                     $("#isbn").removeAttr("disabled"); 
                 } 
+            });
+            $("#search_button").click(function(e){
+                var radioValue = $("input[name='book']:checked").val();
+                if(radioValue == 'title' && $("#title").val() == '')
+                    {
+                        e.preventDefault();
+                        alert("Enter a title.");
+                    }
+                else if(radioValue == 'isbn' && $("#isbn").val() == '')
+                    {
+                        e.preventDefault();
+                        alert("Enter an isbn number.");
+                    
+                    }
+                else
+                    {
+                        $("#search-form").submit();
+                    }
             });
         });
     </script>

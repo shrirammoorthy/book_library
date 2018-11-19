@@ -14,63 +14,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ secure_url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ secure_url('login') }}">Login</a></li>
-                            <li><a class= "btn btn-danger" href="{{ secure_url('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ secure_url('/search') }}">Global Books Search</a>
-                                        <a href="{{ secure_url('/list') }}">My Book List</a>
-                                        <a href="{{ secure_url('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ secure_url('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    @include('header')
     <br>
     <div class="container">
         <div class="row">
@@ -81,14 +25,18 @@
 				  </div>
 				  <div class="panel-body" id="items">
 				    @if(count($items)>0)
-                        <ul class="list-group">
-                            @foreach($items as $item)
-                                <li class="list-group-item ourItem">
-                                    <!-- <input type="hidden" class="itemId" value="{{$item->id}}"><br /> -->
-                                    <a href="/users_list/{{$item->id}}">{{$item->name}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                      <table>
+                         @foreach($items as $item)
+                            <tr>
+                                <td class="col-md-6">
+                                 {{$item->name}}
+                                </td>
+                                <td class="col-md-6">
+                                 <a class="btn btn-info" href="/users_list/{{$item->id}}">View Books</a>
+                                </td>
+                            </tr>     
+                        @endforeach  
+                      </table>
                     @else
                         <p>Book list is empty.</p>
                     @endif  

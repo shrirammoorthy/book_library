@@ -53,11 +53,12 @@ class ListController extends Controller
     }
     public function book(Request $request)
     {
+        $id = \Auth::user()->id;
         $books = new GoogleBooks(['key' => env('GOOGLE_BOOKS_KEY')]);                   
         $items_array = array();
         if($request->title != ''){ 
             foreach ($books->volumes->search($request->title) as $books_key => $vol) {
-                $item = Book::where('title', $vol->title)->get();
+                $item = Book::where('title', $vol->title)->where('user_id', $id)->get();
                 if(!$item->isEmpty())
                 {
                     $items_array[$books_key]['status']=1;
@@ -78,7 +79,7 @@ class ListController extends Controller
         if($request->isbn != '')
         {
             $volume = $books->volumes->byIsbn($request->isbn);
-            $item = Book::where('title', $volume->title)->get();
+            $item = Book::where('title', $volume->title)->where('user_id', $id)->get();
             if(!$item->isEmpty())
             {
                 $items_array[0]['status']=1;

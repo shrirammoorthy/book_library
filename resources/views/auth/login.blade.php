@@ -52,7 +52,7 @@
 									<strong>Login With Facebook</strong>
                                 </a> 
 
-                                <a class="btn btn-link" href="{{ secure_url('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

@@ -70,7 +70,7 @@
                 <div class="top-right links">
                     @if (Auth::check())
                         <a href="{{ secure_url('/home') }}">Home</a>
-                        <a href="{{ secure_url('/list') }}">My Book List</a>
+                        <a href="{{ secure_url('/list') }}">My Book App</a>
                     @else
                         <a class ="btn btn-primary" href="{{ secure_url('/login') }}">Login</a>
                         <a class ="btn btn-primary" href="{{ secure_url('/register') }}">Register</a>
@@ -81,9 +81,6 @@
             <div class="content">
                 <div class="title m-b-md">
                     Welcome
-                </div>
-                <div class="links">
-                    Source Code - <a target="_blank" href="https://github.com/">GitHub</a>
                 </div>
             </div>
         </div>
