@@ -11,6 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     {{-- Font awesome --}}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -25,14 +26,14 @@
 				  </div>
 				  <div class="panel-body" id="items">
 				    @if(count($items)>0)
-                      <table>
+                      <table class="table">
                          @foreach($items as $item)
                             <tr>
                                 <td class="col-md-6">
                                  {{$item->name}}
                                 </td>
                                 <td class="col-md-6">
-                                 <a class="btn btn-info" href="/users_list/{{$item->id}}">View Books</a>
+                                 <a class="viewBooks btn btn-info" href="/users_list/{{$item->id}}">View Books</a>
                                 </td>
                             </tr>     
                         @endforeach  

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -44,7 +45,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             @if (Request::path() == 'register')
-                                <li><a href="{{ secure_url('login') }}">Login</a></li>
+                                <li><a href="{{ secure_url('/') }}">Login</a></li>
                             @else
                                 <li><a href="{{ secure_url('register') }}">Register</a></li>
                             @endif

@@ -15,7 +15,7 @@ class ListController extends Controller
         $id = \Auth::user()->id;
         if(Auth::user()){
             $items = Book::where('user_id', $id)->get();
-            return view('list', compact('items'));
+            return view('home', compact('items'));
         }else{
             return redirect('/');
         }
@@ -49,13 +49,59 @@ class ListController extends Controller
     }   
     public function search(Request $request)
     {
-       return view ('search');
+        $id = \Auth::user()->id;
+        $books = new GoogleBooks(['key' => env('GOOGLE_BOOKS_KEY')]);                   
+        $items_array = array();
+        
+        if($request->title != ''){ 
+            $search = $request->title;
+            foreach ($books->volumes->search($request->title) as $books_key => $vol) {
+                $item = Book::where('title', $vol->title)->where('user_id', $id)->get();
+                if(!$item->isEmpty())
+                {
+                    $items_array[$books_key]['status']=1;
+                }
+                else{
+                    $items_array[$books_key]['status']=0;
+                }
+                $items_array[$books_key]['title'] = $vol->title;
+                $items_array[$books_key]['link'] = $vol->previewLink;
+                if($vol->imageLinks != ''){
+                    $items_array[$books_key]['image'] = $vol->imageLinks->thumbnail;
+                }else{
+                    $items_array[$books_key]['image'] = '#';
+                }
+                
+           }
+        }
+        if($request->isbn != '')
+        {
+            $search = $request->isbn;
+            $volume = $books->volumes->byIsbn($request->isbn);
+            $item = Book::where('title', $volume->title)->where('user_id', $id)->get();
+            if(!$item->isEmpty())
+            {
+                $items_array[0]['status']=1;
+            }
+            else{
+                $items_array[0]['status']=0;
+            }
+
+            $items_array[0]['image'] = $volume->imageLinks->thumbnail;
+            $items_array[0]['title'] = $volume->title;
+            $items_array[0]['link'] = $volume->previewLink;          
+        } 
+        return view('search', compact('items_array', 'search'));
     }
+
     public function book(Request $request)
     {
         $id = \Auth::user()->id;
         $books = new GoogleBooks(['key' => env('GOOGLE_BOOKS_KEY')]);                   
         $items_array = array();
+        echo $request;
+        exit;
+
         if($request->title != ''){ 
             foreach ($books->volumes->search($request->title) as $books_key => $vol) {
                 $item = Book::where('title', $vol->title)->where('user_id', $id)->get();
@@ -92,6 +138,6 @@ class ListController extends Controller
             $items_array[0]['title'] = $volume->title;
             $items_array[0]['link'] = $volume->previewLink;          
         } 
-        return view('book', compact('items_array'));
+        return view('search', compact('items_array'));
     }
 }

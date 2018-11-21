@@ -39,7 +39,7 @@
                         <a href="{{ secure_url('/search') }}">Global Books Search</a>
                         </li>
                         <li>
-                        <a href="{{ secure_url('/list') }}">My Book List</a>
+                        <a href="{{ secure_url('/home') }}">My Book List</a>
                         </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

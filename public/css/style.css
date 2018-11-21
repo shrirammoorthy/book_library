@@ -1,1 +1,148 @@
 .sorting_1 img { height: 125px !important; width: 108px !important;}
+
+body { 
+      
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    p {
+    color:#CCC;
+    }
+    #textinput {
+    height: 40px !important;
+    }
+    .spacing {
+    padding-top:7px;
+    padding-bottom:7px;
+    }
+  
+    .logo {
+    color:#CCC;
+    font-size:50px;
+    }
+    .wellcome{
+    color:#f7370a;;
+    }
+    .panel-info > .panel-heading {
+    background-color:white;
+    color:gray;
+    }
+    .panel-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: inherit;
+    }
+    .lang{
+    background:#f7f7f7;
+    padding:10px;
+    }
+    .lang a{
+    color:gray;
+    padding:13px
+    }
+    .Email{
+    background:white;
+    border:1px solid #ccc;
+    text-align:center;
+    margin-top:-20px;
+    padding:10px;
+    cursor:pointer;
+    }	
+    /* add appropriate colors to fb, twitter and google buttons */
+    .fb {
+    background-color: #3B5998;
+    color: white;
+    width:100%;
+    height:40px;
+    text-align:center;
+    }
+    .google {
+    background-color: #dd4b39;
+    color: white;
+    width:100%;
+    height:40px;
+    text-align:center;
+    }
+    .panel-info{
+        background: #fff;
+        padding: 33px;
+    }
+.loginPanel {
+    width: 60%;
+    margin: 80px auto 0 auto;
+}
+.panel-heading .panel-success {
+    margin: 5px 0;
+}
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.titleOption, 
+.inputSearch, 
+.searchBtn {
+    width: 30%;
+}
+.titleOption #title, 
+.inputSearch #isbn {
+    width: 91.5%;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 4px;
+    padding: 8px 4%;
+    margin-top: 5px;
+}
+.titleOption label, 
+.inputSearch label {
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 18px;
+    position: relative;
+    top: -2px;
+    margin-left: 5px;
+}
+.inputSearch {
+    margin-left: 4%;
+}
+.searchBtn {
+    margin-left: 4%;
+    align-self: center;
+}
+.searchBtn input {
+    width: 100%;
+    border-radius: 4px;
+    border: 0;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.searchBtn input:hover {
+    background-color: #004997 !important;
+    color: #fff !important;
+}
+.table {
+    width: 100%;
+}
+.table tr {
+    margin-bottom: 15px;
+}
+.table tr td {
+    vertical-align: middle !important;
+    border: 0 !important;
+}
+.table tr td:first-child {
+    font-size: 16px;
+}
+.table tr td .viewBooks {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: capitalize;
+    width: 100%;
+}

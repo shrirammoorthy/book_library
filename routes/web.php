@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('signin');
 });
 
 Route::get('test', function()
@@ -22,16 +22,12 @@ Route::get('test', function()
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('list','ListController@index');
+Route::get('/home', 'ListController@index')->name('home');
 Route::post('delete','ListController@delete');
-Route::post('book_search','ListController@book');
 Route::post('create','ListController@create');
 Route::get('search','ListController@search');
 Route::get('users','ListController@users');
 Route::get('users_list/{id}','ListController@users_list');
-
-Auth::routes();
 
 Route::get('/google/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/google/callback', 'Auth\LoginController@handleProviderCallback');
